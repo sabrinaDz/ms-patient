@@ -2,6 +2,7 @@ package com.sihatech.mspatient.mspatient.web.controller;
 
 import com.sihatech.mspatient.mspatient.data.Patient;
 import com.sihatech.mspatient.mspatient.service.PatientService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/patients")
+@Slf4j
 public class PatientController {
 
 
@@ -35,4 +37,9 @@ public class PatientController {
     }
 
 
+    @PostMapping("/")
+    public Patient addNewPatient(@RequestBody Patient patient){
+        log.info("Adding new Patient inside controller");
+        return patientService.addNewPatient(patient);
+    }
 }
