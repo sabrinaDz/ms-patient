@@ -4,6 +4,8 @@ import com.sihatech.mspatient.mspatient.data.Patient;
 import com.sihatech.mspatient.mspatient.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +27,15 @@ public class PatientServiceImpl implements PatientService{
 
     @Override
     public Patient getPatientById(UUID patientId) {
-        return null;
+        Patient patient = patientRepository.getById(patientId);
+        return Patient.builder().id(patient.getId())
+                .firstName(patient.getFirstName())
+                .lastName(patient.getLastName())
+                .dateOfBirth(patient.getDateOfBirth())
+                .socialSecurityNumber(patient.getSocialSecurityNumber())
+                .weight(patient.getWeight())
+                .size(patient.getSize())
+                .build();
     }
 
     @Override
