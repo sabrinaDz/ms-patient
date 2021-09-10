@@ -15,5 +15,5 @@ public interface PatientService {
 
     void deletePatient(UUID patientId);
 
-    Patient updatePatient(Patient patient);
+    Patient updatePatient(UUID patientId,Patient patient);
 }

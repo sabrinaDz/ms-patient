@@ -42,4 +42,10 @@ public class PatientController {
         log.info("Adding new Patient inside controller");
         return patientService.addNewPatient(patient);
     }
+
+
+    @PutMapping("/{patientId}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable UUID patientId, @RequestBody Patient patient){
+        return new ResponseEntity<>(patientService.updatePatient(patientId,patient), HttpStatus.CREATED);
+    }
 }
