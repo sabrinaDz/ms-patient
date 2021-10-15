@@ -38,6 +38,7 @@ public class PatientController {
 
 
     @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public Patient addNewPatient(@RequestBody Patient patient){
         log.info("Adding new Patient inside controller");
         return patientService.addNewPatient(patient);
